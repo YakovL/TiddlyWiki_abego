@@ -1,12 +1,11 @@
 /***
-|''Name:''|YourSearchPlugin|
-|''Version:''|2.2.0 (2023-05-06)|
-|''Summary:''|Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more.|
-|''Source:''|http://tiddlywiki.abego-software.de/#YourSearchPlugin|
-|''Twitter:''|[[@abego|https://twitter.com/#!/abego]]|
-|''GitHub:''|https://github.com/abego/YourSearchPlugin|
-|''Author:''|UdoBorkowski (ub [at] abego-software [dot] de)|
-|''License:''|[[BSD open source license|http://www.abego-software.de/legal/apl-v10.html]]|
+|Name   |YourSearchPlugin|
+|Version|2.2.0 (2023-05-06)|
+|Summary|Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more.|
+|Source |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js|
+|GitHub |https://github.com/YakovL/TiddlyWiki_abego|
+|Author |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
+|License|[[BSD open source license|http://www.abego-software.de/legal/apl-v10.html]]|
 !About YourSearch
 YourSearch gives you a bunch of new features to simplify and speed up your daily searches in TiddlyWiki. It seamlessly integrates into the standard TiddlyWiki search: just start typing into the 'search' field and explore!
 
