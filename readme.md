@@ -11,4 +11,4 @@ now available at https://yakovl.github.io/TiddlyWiki_abego/original/.
 The `maintained` folder contains the updated content,
 available at https://yakovl.github.io/TiddlyWiki_abego/maintained/.
 
-Thanks Udo, for your generosity, your kindness, and your patience.[*](https://github.com/abego/YourSearchPlugin/issues/3)
+Thanks Udo, for your generosity, your kindness, and your patience.[*](https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217)
