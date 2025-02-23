@@ -1,6 +1,11 @@
 |Source     |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/AbegoCollection.txt|
 |Description|Selected extensions created by Udo Borkowski|
+|Version    |0.1.0|
 //{{{
 [
+  {
+    "url": "https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js",
+    "description": "Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more"
+  }
 ]
 //}}}
