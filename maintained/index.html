@@ -3102,13 +3102,11 @@ if(!version.extensions.IntelliTaggerPlugin){if(!window.abego){window.abego={};}i
 ***/
 /***
 !Using the &quot;IntelliTagsEditCommandPlugin&quot;
-Add the command {{{intelliTagsEdit}}} into the 'macro' attribute of the 'toolbar' {{{&lt;div...&gt;}}} in your ViewTemplate.
+Add the command {{{intelliTagsEdit}}} into the '~ViewToolbar' slice in your ToolbarCommands.
 
 ''Example:''
 {{{
-&lt;div class='toolbar'
-        macro='toolbar -closeTiddler closeOthers +editTiddler intelliTagsEdit permalink references jump'&gt;
-&lt;/div&gt;
+|~ViewToolbar|closeTiddler closeOthers +editTiddler intelliTagsEdit permalink jump > fields references|
 }}}
 
 This adds a &quot;tags&quot; button to the toolbar of the tiddlers (next to the ''edit'' button). Pressing the &quot;tags&quot; button will open the input field for the tiddler's tags and let you edit the tags with all the [[IntelliTaggerPlugin|http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin]] features.
@@ -6202,9 +6200,9 @@ For more information visit http://www.tiddlywiki.com/.
 <div title="UdoBorkowski" modifier="UdoBorkowski" created="200511161512" tags="UdoBorkowski basic">
 <pre>Udo Borkowski (email: ub [at] abego-software [dot] de)</pre>
 </div>
-<div title="ViewTemplate" modifier="YourName" modified="201204161755" created="200601061302" tags="basic" changecount="1">
+<div title="ViewTemplate" modifier="Yakov Litvin" modified="202502241255" created="200601061302" tags="basic">
 <pre>&lt;!--{{{--&gt;
-&lt;div class='toolbar' macro='toolbar -closeTiddler closeOthers +editTiddler editIncludedTiddler intelliTagsEdit permalink references jump'&gt;&lt;/div&gt;
+&lt;div class='toolbar'role='navigation' macro='toolbar [[ToolbarCommands::ViewToolbar]]'&gt;&lt;/div&gt;
 &lt;div class='title' macro='view title'&gt;&lt;/div&gt;
 &lt;div class='subtitle' macro='view includeURL'&gt;&lt;/div&gt;
 &lt;!-- &lt;div class='subtitle'&gt;&lt;span macro='view modifier link'&gt;&lt;/span&gt;, &lt;span macro='view modified date [[DD MMM YYYY]]'&gt;&lt;/span&gt; (created &lt;span macro='view created date [[DD MMM YYYY]]'&gt;&lt;/span&gt;)&lt;/div&gt;
@@ -6213,6 +6211,11 @@ For more information visit http://www.tiddlywiki.com/.
 &lt;div class='viewer' macro='view text wikified'&gt;&lt;/div&gt;
 &lt;div class='tagClear'&gt;&lt;/div&gt;
 &lt;!--}}}--&gt;</pre>
+</div>
+<div title="ToolbarCommands" modifier="Yakov Litvin" modified="202502241225" created="202502241225">
+<pre>|~ViewToolbar|closeTiddler closeOthers +editTiddler intelliTagsEdit permalink references jump|
+|~EditToolbar|+saveTiddler -cancelTiddler deleteTiddler|
+</pre>
 </div>
 <div title="WhereClauseExamples" modifier="UdoBorkowski" created="200511210905" tags="Examples ForEachTiddlerMacro">
 <pre>Here are some examples that show the usage of the whereClause in the ForEachTiddlerMacro.
