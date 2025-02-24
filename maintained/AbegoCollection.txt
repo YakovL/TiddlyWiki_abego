@@ -1,12 +1,16 @@
 |Source     |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/AbegoCollection.txt|
 |Description|Selected extensions created by Udo Borkowski|
-|Version    |0.1.1|
+|Version    |0.2.0|
 See not yet indexed extensions at https://yakovl.github.io/TiddlyWiki_abego/maintained/
 //{{{
 [
   {
     "url": "https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js",
     "description": "Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more"
+  },
+  {
+    "url": "https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/IntelliTaggerPlugin.js",
+    "description": "Speed up tagging tiddlers using tag suggestions and much more"
   }
 ]
 //}}}
