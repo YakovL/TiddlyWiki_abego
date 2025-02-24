@@ -3,8 +3,8 @@
 |Version|1.0.2 (2007-07-25)|
 |Source |https://yakovl.github.io/TiddlyWiki_abego/maintained/src/IntelliTaggerPlugin.js|
 |Author |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
+|Demo   |try view button on a tiddler and click the tags field [[here|https://yakovl.github.io/TiddlyWiki_abego/maintained#%5B%5BBSD%20open%20source%20license%5D%5D]]|
 |Documentation|[[IntelliTaggerPlugin Documentation]]|
-|~SourceCode|[[IntelliTaggerPlugin SourceCode]]|
 |Licence|[[BSD open source license (abego Software)]]|
 |~CoreVersion|2.0.8|
 ***/
@@ -44,13 +44,11 @@ version.extensions.IntelliTaggerPlugin = {
     major: 1, minor: 0, revision: 2,
     date: new Date(2007, 6, 25),
     type: 'plugin',
-    source: "http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin",
+    source: "https://yakovl.github.io/TiddlyWiki_abego/maintained/src/IntelliTaggerPlugin.js",
     documentation: "[[IntelliTaggerPlugin Documentation]]",
-    sourcecode: "[[IntelliTaggerPlugin SourceCode]]",
     author: "Udo Borkowski (ub [at] abego-software [dot] de)",
     licence: "[[BSD open source license (abego Software)]]",
-    tiddlywiki: "Version 2.0.8 or better",
-    browser: "Firefox 1.5.0.2 or better"
+    tiddlywiki: "Version 2.0.8 or better"
 };
 //}}}
 //#startOf: MainCode
@@ -1083,7 +1081,6 @@ config.shadowTiddlers["IntelliTaggerEditTagsTemplate"] =
 
 config.shadowTiddlers["BSD open source license (abego Software)"] = "See [[Licence|https://yakovl.github.io/TiddlyWiki_abego/maintained#%5B%5BBSD%20open%20source%20license%5D%5D]].";
 config.shadowTiddlers["IntelliTaggerPlugin Documentation"] = "[[Documentation on abego Software website|http://tiddlywiki.abego-software.de/doc/IntelliTagger.pdf]].";
-config.shadowTiddlers["IntelliTaggerPlugin SourceCode"] = "[[Plugin source code|https://yakovl.github.io/TiddlyWiki_abego/maintained/src/IntelliTaggerPlugin.js]]\n";
 //}}}
 
 //{{{
