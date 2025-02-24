@@ -3087,20 +3087,15 @@ if(!version.extensions.IntelliTaggerPlugin){if(!window.abego){window.abego={};}i
 // %/
 </pre>
 </div>
-<div title="IntelliTagsEditCommandPlugin" modifier="UdoBorkowski" modified="200710031402" created="200710031345" tags="systemConfig">
+<div title="IntelliTagsEditCommandPlugin" modifier="Yakov Litvin" modified="202502241402" created="200710031345" tags="systemConfig">
 <pre>/***
 |''Name:''|IntelliTagsEditCommandPlugin|
-|''Version:''|1.0.0 (2007-10-03)|
-|''Type:''|plugin|
+|''Version:''|1.0.1 (2025-02-24)|
 |''Description:''|A command for your tiddler's toolbar to directly edit the tiddler's tags using the IntelliTaggerPlugin, without switching to &quot;edit mode&quot;.|
-|''Source:''|http://tiddlywiki.abego-software.de/#IntelliTagsEditCommandPlugin|
-|''Requires:''|IntelliTaggerPlugin http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin|
+|''Source:''|https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTagsEditCommandPlugin|
+|''Requires:''|IntelliTaggerPlugin https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTaggerPlugin|
 |''Author:''|Udo Borkowski (ub [at] abego-software [dot] de)|
 |''Licence:''|[[BSD open source license (abego Software)]]|
-|''~CoreVersion:''|2.0.8|
-|''Browser:''|Firefox 1.5.0.2 or better|
-***/
-/***
 !Using the &quot;IntelliTagsEditCommandPlugin&quot;
 Add the command {{{intelliTagsEdit}}} into the '~ViewToolbar' slice in your ToolbarCommands.
 
@@ -3109,29 +3104,26 @@ Add the command {{{intelliTagsEdit}}} into the '~ViewToolbar' slice in your Tool
 |~ViewToolbar|closeTiddler closeOthers +editTiddler intelliTagsEdit permalink jump > fields references|
 }}}
 
-This adds a &quot;tags&quot; button to the toolbar of the tiddlers (next to the ''edit'' button). Pressing the &quot;tags&quot; button will open the input field for the tiddler's tags and let you edit the tags with all the [[IntelliTaggerPlugin|http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin]] features.
-***/
-/***
+This adds a &quot;tags&quot; button to the toolbar of the tiddlers (next to the ''edit'' button). Press it to open the tags edit field with all the [[IntelliTaggerPlugin|http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin]] features.
+
 !Source Code
 ***/
 //{{{
 (function(){
 
 if (!version.extensions.IntelliTaggerPlugin)
-    throw Error(&quot;IntelliTagsEditCommandPlugin requires the IntelliTaggerPlugin (http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin)&quot;);
+    throw Error(&quot;IntelliTagsEditCommandPlugin requires the IntelliTaggerPlugin (https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTaggerPlugin)&quot;);
 
-if (config.commands.intelliTagsEdit)
-    return;
+if (config.commands.intelliTagsEdit) return;
 
 config.commands.intelliTagsEdit = {
 	text: &quot;tags&quot;,
-	tooltip: &quot;edit the tags&quot;
-};
-
-config.commands.intelliTagsEdit.handler = function(event,src,title) {
-	var button = abego.IntelliTagger.createEditTagsButton(title, null, &quot;tags&quot;, &quot;edit the tags&quot;);
-	button.onclick(event);
-	return false;
+	tooltip: &quot;edit the tags&quot;,
+	handler: function(event, src, title) {
+		var button = abego.IntelliTagger.createEditTagsButton(title, null, &quot;tags&quot;, &quot;edit the tags&quot;);
+		button.onclick(event);
+		return false;
+	}
 };
 
 })();
