@@ -1,14 +1,12 @@
 /***
-|''Name:''|IntelliTaggerPlugin|
-|''Version:''|1.0.2 (2007-07-25)|
-|''Type:''|plugin|
-|''Source:''|http://tiddlywiki.abego-software.de/#IntelliTaggerPlugin|
-|''Author:''|Udo Borkowski (ub [at] abego-software [dot] de)|
-|''Documentation:''|[[IntelliTaggerPlugin Documentation]]|
-|''~SourceCode:''|[[IntelliTaggerPlugin SourceCode]]|
-|''Licence:''|[[BSD open source license (abego Software)]]|
-|''~CoreVersion:''|2.0.8|
-|''Browser:''|Firefox 1.5.0.2 or better|
+|Name   |IntelliTaggerPlugin|
+|Version|1.0.2 (2007-07-25)|
+|Source |https://yakovl.github.io/TiddlyWiki_abego/maintained/src/IntelliTaggerPlugin.js|
+|Author |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
+|Documentation|[[IntelliTaggerPlugin Documentation]]|
+|~SourceCode|[[IntelliTaggerPlugin SourceCode]]|
+|Licence|[[BSD open source license (abego Software)]]|
+|~CoreVersion|2.0.8|
 ***/
 /***
 !Version History
@@ -1082,12 +1080,10 @@ config.shadowTiddlers["IntelliTaggerEditTagsTemplate"] =
             "<!--\n"+
             "}}}\n"+
             "-->\n";
-            
-config.shadowTiddlers["BSD open source license (abego Software)"] = "See [[Licence|http://tiddlywiki.abego-software.de/#%5B%5BBSD%20open%20source%20license%5D%5D]].";
+
+config.shadowTiddlers["BSD open source license (abego Software)"] = "See [[Licence|https://yakovl.github.io/TiddlyWiki_abego/maintained#%5B%5BBSD%20open%20source%20license%5D%5D]].";
 config.shadowTiddlers["IntelliTaggerPlugin Documentation"] = "[[Documentation on abego Software website|http://tiddlywiki.abego-software.de/doc/IntelliTagger.pdf]].";
-config.shadowTiddlers["IntelliTaggerPlugin SourceCode"] = "[[Plugin source code on abego Software website|http://tiddlywiki.abego-software.de/archive/IntelliTaggerPlugin/Plugin-IntelliTagger-src.1.0.2.js]]\n";
-            
-            
+config.shadowTiddlers["IntelliTaggerPlugin SourceCode"] = "[[Plugin source code|https://yakovl.github.io/TiddlyWiki_abego/maintained/src/IntelliTaggerPlugin.js]]\n";
 //}}}
 
 //{{{
