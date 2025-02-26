@@ -1,14 +1,13 @@
 /***
 <<checkForDataTiddlerPlugin>>
-|''Name:''|FormTiddlerPlugin|
-|''Version:''|1.0.7 (2012-04-19)|
-|''Summary:''|Use form-based tiddlers to enter your tiddler data using text fields, listboxes, checkboxes etc. (All standard HTML Form input elements supported).|
-|''Documentation:''|[[Introduction|FormTiddler Introduction]], [[Examples|FormTiddler Examples]]|
-|''Source:''|http://tiddlywiki.abego-software.de/#FormTiddlerPlugin|
-|''Twitter:''|[[@abego|https://twitter.com/#!/abego]]|
-|''Author:''|UdoBorkowski (ub [at] abego-software [dot] de)|
-|''License:''|[[BSD open source license|http://www.abego-software.de/legal/apl-v10.html]]|
-|''Requires:''|DataTiddlerPlugin|
+|Name         |FormTiddlerPlugin|
+|Version      |1.0.7 (2012-04-19)|
+|Summary      |Use form-based tiddlers to enter your tiddler data using text fields, listboxes, checkboxes etc. (All standard HTML Form input elements supported).|
+|Documentation|[[Introduction|FormTiddler Introduction]], [[Examples|FormTiddler Examples]]|
+|Source       |https://yakovl.github.io/TiddlyWiki_abego/maintained/src/FormTiddlerPlugin.js|
+|Author       |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
+|License      |[[BSD open source license|https://yakovl.github.io/TiddlyWiki_abego/maintained/#%5B%5BBSD%20open%20source%20license%20(abego%20Software)%5D%5D]]|
+|Requires     |DataTiddlerPlugin|
 !Description
 Use form-based tiddlers to enter your tiddler data using text fields, listboxes, checkboxes etc. (All standard HTML Form input elements supported).
 
