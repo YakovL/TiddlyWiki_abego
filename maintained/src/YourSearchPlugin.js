@@ -5,7 +5,7 @@
 |Source |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js|
 |GitHub |https://github.com/YakovL/TiddlyWiki_abego|
 |Author |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
-|License|[[BSD open source license|http://www.abego-software.de/legal/apl-v10.html]]|
+|License|[[BSD open source license|https://yakovl.github.io/TiddlyWiki_abego/maintained/#%5B%5BBSD%20open%20source%20license%20(abego%20Software)%5D%5D]]|
 !About YourSearch
 YourSearch gives you a bunch of new features to simplify and speed up your daily searches in TiddlyWiki. It seamlessly integrates into the standard TiddlyWiki search: just start typing into the 'search' field and explore!
 

@@ -5,7 +5,7 @@
 |Author |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
 |Demo   |try view button on a tiddler and click the tags field [[here|https://yakovl.github.io/TiddlyWiki_abego/maintained#%5B%5BBSD%20open%20source%20license%5D%5D]]|
 |Documentation|[[IntelliTaggerPlugin Documentation]]|
-|Licence|[[BSD open source license (abego Software)]]|
+|Licence|[[BSD open source license|https://yakovl.github.io/TiddlyWiki_abego/maintained/#%5B%5BBSD%20open%20source%20license%20(abego%20Software)%5D%5D]]|
 |~CoreVersion|2.0.8|
 ***/
 /***

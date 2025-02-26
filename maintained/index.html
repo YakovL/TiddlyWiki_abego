@@ -2683,7 +2683,7 @@ For details and how to use the macros see the [[introduction|FormTiddler Introdu
 ***/
 /***
 This plugin's source code is compressed (and hidden).
-Use this [[link|https://yakovl.github.io/TiddlyWiki_abego/original/src/FormTiddlerPlugin-1.0.7.js]] to get the readable source code.
+Use this [[link|https://yakovl.github.io/TiddlyWiki_abego/maintained/src/FormTiddlerPlugin.js]] to get the readable source code.
 ***/
 ///%
 if(!window.abego){window.abego={}}abego.getOptionsValue=function(c,b){var a=c.options[b].value;if(!a&amp;&amp;c.options[b].text){a=c.options[b].text}return a};version.extensions.FormTiddlerPlugin={major:1,minor:0,revision:7,date:new Date(2012,3,19),type:&quot;plugin&quot;,source:&quot;http://tiddlywiki.abego-software.de/#FormTiddlerPlugin&quot;};if(!window.story){window.story=window}if(!TiddlyWiki.prototype.getTiddler){TiddlyWiki.prototype.getTiddler=function(a){return t=this.tiddlers[a];return(t!=undefined&amp;&amp;t instanceof Tiddler)?t:null}}config.macros.formTiddler={label:&quot;formTiddler&quot;,prompt:&quot;Edit tiddler data using forms&quot;,setter:{button:function(b,a){},checkbox:function(b,a){b.checked=a},file:function(b,a){try{b.value=a}catch(b){}},hidden:function(b,a){b.value=a},password:function(b,a){b.value=a},radio:function(b,a){b.checked=(b.value==a)},reset:function(b,a){},&quot;select-one&quot;:function(b,a){config.macros.formTiddler.setSelectOneValue(b,a)},&quot;select-multiple&quot;:function(b,a){config.macros.formTiddler.setSelectMultipleValue(b,a)},submit:function(b,a){},text:function(b,a){b.value=a},textarea:function(b,a){b.value=a}},getter:{button:function(b,a){return undefined},checkbox:function(b,a){return b.checked},file:function(b,a){return b.value},hidden:function(b,a){return b.value},password:function(b,a){return b.value},radio:function(b,a){return b.checked?b.value:undefined},reset:function(b,a){return undefined},&quot;select-one&quot;:function(b,a){return config.macros.formTiddler.getSelectOneValue(b)},&quot;select-multiple&quot;:function(b,a){return config.macros.formTiddler.getSelectMultipleValue(b)},submit:function(b,a){return undefined},text:function(b,a){return b.value},textarea:function(b,a){return b.value}}};config.macros.formTiddler.handler=function(g,c,f,h,d,n){if(!config.macros.formTiddler.checkForExtensions(g,c)){return}var j=0;var l=undefined;if(j&lt;f.length){l=f[j];j++}if(!l){config.macros.formTiddler.createErrorElement(g,&quot;No form template specified in &lt;&lt;&quot;+c+&quot;&gt;&gt;.&quot;);return}var a=store.getTiddler(l);if(!a){config.macros.formTiddler.createErrorElement(g,&quot;Form template '&quot;+l+&quot;' not found.&quot;);return}var m=a.text;if(!m){return}var b=config.macros.formTiddler.getContainingTiddlerName(g);var o=&quot;form&quot;+l+&quot;__&quot;+b;var k=document.createElement(&quot;form&quot;);k.setAttribute(&quot;name&quot;,o);g.appendChild(k);wikify(m,k);config.macros.formTiddler.initValuesAndHandlersInFormElements(o,DataTiddler.getDataObject(b))};config.macros.formTiddler.initValuesAndHandlersInFormElements=function(l,f){var b=config.macros.formTiddler.findForm(l);if(!b){return}try{var a=b.elements;for(var g=0;g&lt;a.length;g++){var j=a[g];var d=config.macros.formTiddler.setter[j.type];if(d){var k=f[j.name];if(k!=null){d(j,k)}j.onchange=onFormTiddlerChange}else{config.macros.formTiddler.displayFormTiddlerError(&quot;No setter defined for INPUT element of type '&quot;+j.type+&quot;'. (Element '&quot;+j.name+&quot;' in form '&quot;+l+&quot;')&quot;)}}}catch(h){config.macros.formTiddler.displayFormTiddlerError(&quot;Error when updating elements with new formData. &quot;+h)}};config.macros.formTiddler.findForm=function(c){var a=window.document.forms;for(var b=0;b&lt;a.length;b++){var d=a[b];if(d.name==c){return d}}return null};config.macros.formTiddler.setSelectOneValue=function(b,c){var d=b.options.length;for(var a=0;a&lt;d;a++){b.options[a].selected=abego.getOptionsValue(b,a)==c}};config.macros.formTiddler.setSelectMultipleValue=function(c,d){var a={};for(var b=0;b&lt;d.length;b++){a[d[b]]=true}var e=c.length;for(var b=0;b&lt;e;b++){c.options[b].selected=!(!a[abego.getOptionsValue(c,b)])}};config.macros.formTiddler.getSelectOneValue=function(b){var a=b.selectedIndex;return(a&gt;=0)?abego.getOptionsValue(b,a):null};config.macros.formTiddler.getSelectMultipleValue=function(c){var a=[];var d=c.length;for(var b=0;b&lt;d;b++){if(c.options[b].selected){a.push(abego.getOptionsValue(c,b))}}return a};config.macros.formTiddler.checkForExtensions=function(a,b){if(!version.extensions.DataTiddlerPlugin){config.macros.formTiddler.createErrorElement(a,&quot;&lt;&lt;&quot;+b+&quot;&gt;&gt; requires the DataTiddlerPlugin. (You can get it from http://tiddlywiki.abego-software.de/#DataTiddlerPlugin)&quot;);return false}return true};config.macros.formTiddler.trace=function(a){displayMessage(&quot;Trace: &quot;+a)};config.macros.formTiddler.displayFormTiddlerError=function(a){alert(&quot;FormTiddlerPlugin Error: &quot;+a)};config.macros.formTiddler.createErrorElement=function(a,b){return createTiddlyElement(a,&quot;span&quot;,null,&quot;formTiddlerError&quot;,b)};config.macros.formTiddler.getContainingTiddlerName=function(a){return story.findContainingTiddler(a).getAttribute(&quot;tiddler&quot;)};function onFormTiddlerChange(f){if(!f){f=window.event}var d=resolveTarget(f);var b=config.macros.formTiddler.getContainingTiddlerName(d);var a=config.macros.formTiddler.getter[d.type];if(a){var c=a(d);DataTiddler.setData(b,d.name,c)}else{config.macros.formTiddler.displayFormTiddlerError(&quot;No getter defined for INPUT element of type '&quot;+d.type+&quot;'. (Element '&quot;+d.name+&quot;' used in tiddler '&quot;+b+&quot;')&quot;)}}window.onFormTiddlerChange=onFormTiddlerChange;setStylesheet(&quot;.formTiddlerError{color: #ffffff;background-color: #880000;}&quot;,&quot;formTiddler&quot;);config.macros.checkForDataTiddlerPlugin={label:&quot;checkForDataTiddlerPlugin&quot;,version:{major:1,minor:0,revision:0,date:new Date(2005,12,14)},prompt:&quot;Check if the DataTiddlerPlugin exists&quot;};config.macros.checkForDataTiddlerPlugin.handler=function(a,b,c){config.macros.formTiddler.checkForExtensions(a,config.macros.formTiddler.label)};config.macros.newTiddlerWithForm={label:&quot;newTiddlerWithForm&quot;,version:{major:1,minor:0,revision:1,date:new Date(2006,1,6)},prompt:&quot;Creates a new Tiddler with a &lt;&lt;formTiddler ...&gt;&gt; macro&quot;};config.macros.newTiddlerWithForm.handler=function(place,macroName,params){var i=0;var formTemplateName=undefined;if(i&lt;params.length){formTemplateName=params[i];i++}if(!formTemplateName){config.macros.formTiddler.createErrorElement(place,&quot;No form template specified in &lt;&lt;&quot;+macroName+&quot;&gt;&gt;.&quot;);return}var buttonLabel=undefined;if(i&lt;params.length){buttonLabel=params[i];i++}if(!buttonLabel){config.macros.formTiddler.createErrorElement(place,&quot;No button label specified in &lt;&lt;&quot;+macroName+&quot;&gt;&gt;.&quot;);return}var tiddlerNameScript=undefined;var askUser=false;if(i&lt;params.length){tiddlerNameScript=params[i];i++;if(i&lt;params.length&amp;&amp;params[i]==&quot;askUser&quot;){askUser=true;i++}}if(!readOnly){var onClick=function(){var tiddlerName=undefined;if(tiddlerNameScript){try{tiddlerName=eval(tiddlerNameScript)}catch(ex){}}if(!tiddlerName||askUser){tiddlerName=prompt(&quot;Please specify a tiddler name.&quot;,askUser?tiddlerName:&quot;&quot;)}while(tiddlerName&amp;&amp;store.getTiddler(tiddlerName)){tiddlerName=prompt(&quot;A tiddler named '&quot;+tiddlerName+&quot;' already exists.\n\nPlease specify a tiddler name.&quot;,tiddlerName)}if(tiddlerName){var body=&quot;&lt;&lt;formTiddler [[&quot;+formTemplateName+&quot;]]&gt;&gt;&quot;;var tags=[];store.saveTiddler(tiddlerName,tiddlerName,body,config.options.txtUserName,new Date(),tags);story.displayTiddler(null,tiddlerName,1)}};createTiddlyButton(place,buttonLabel,buttonLabel,onClick)}};
@@ -3037,6 +3037,47 @@ config.formatters.push( {
 //}}}
 </pre>
 </div>
+<div title="InnerExternalLinkPlugin" modifier="Yakov Litvin" modified="202502251253" created="202502251253" tags="systemConfig">
+<pre>/***
+|Name   |InnerExternalLinkPlugin|
+|Version|0.9.1|
+|Author |Yakov Litvin|
+***/
+//{{{
+config.extensions.InnerExternalLinkPlugin_orig_createExternalLink = createExternalLink;
+createExternalLink = function(place, url, label) {
+
+	var permaLinkRegExp = /([^#]+)#(?:(?:([^%\[]+))|(?:\[\[([^\]]+)\]\])|(?:%5B%5B([^\]]+)%5D%5D))/,
+		// better to use decoding
+	    match = permaLinkRegExp.exec(url),
+	    siteUrlText = store.getTiddlerText(&quot;SiteUrl&quot;),
+	    pageLocation = window.location,
+	    urlRegExp = /^(([^:\/\?#]+):)?(\/\/([^\/\?#]*))?([^\?#]*)(\?([^#]*))?(#(.*))?/,
+	    matched = false;
+
+	if(match) {
+		var bareUrl = match[1],
+		    tiddlerName = match[4]? match[4] : (match[3]? match[3] : match[2]);
+		tiddlerName = decodeURIComponent(tiddlerName);
+	} else
+		return config.extensions.InnerExternalLinkPlugin_orig_createExternalLink(place, url, label);
+
+	if(siteUrlText == bareUrl)
+		matched = true;
+
+	match = urlRegExp.exec(pageLocation.toString());
+	if(match[1] + match[3] + match[5] == bareUrl)
+		matched = true;
+
+	// may be additional normalizing (stripping the protocol etc, encoding/decoding) should be added
+
+	if(matched)
+		return createTiddlyLink(place, tiddlerName, label);
+	else
+		return config.extensions.InnerExternalLinkPlugin_orig_createExternalLink(place, url, label);
+};
+//}}}</pre>
+</div>
 <div title="Installing Plugins" modifier="YourName" modified="201204161753" created="200602251028" tags="basic" changecount="1">
 <pre>[[Plugins|http://tiddlywiki.com/#Plugins]] are tiddlers that extend the standard functionality of TiddlyWiki, e.g. they may add new macros or formattings etc. A plugin tiddler contains JavaScript code and must be tagged with &lt;&lt;tag systemConfig&gt;&gt; to be activated .
 
@@ -3068,7 +3109,7 @@ BTW:  If you would like to writing your own plugins see [[TiddlyWiki/Dev|http://
 |Author |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
 |Demo   |try view button on a tiddler and click the tags field [[here|https://yakovl.github.io/TiddlyWiki_abego/maintained#%5B%5BBSD%20open%20source%20license%5D%5D]]|
 |Documentation|[[IntelliTaggerPlugin Documentation]]|
-|Licence|[[BSD open source license (abego Software)]]|
+|license|[[BSD open source license|https://yakovl.github.io/TiddlyWiki_abego/maintained/#%5B%5BBSD%20open%20source%20license%20(abego%20Software)%5D%5D]]|
 |~CoreVersion|2.0.8|
 ***/
 /***
@@ -3093,9 +3134,9 @@ if(!version.extensions.IntelliTaggerPlugin){if(!window.abego){window.abego={};}i
 |''Version:''|1.0.1 (2025-02-24)|
 |''Description:''|A command for your tiddler's toolbar to directly edit the tiddler's tags using the IntelliTaggerPlugin, without switching to &quot;edit mode&quot;.|
 |''Source:''|https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTagsEditCommandPlugin|
-|''Requires:''|IntelliTaggerPlugin https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTaggerPlugin|
-|''Author:''|Udo Borkowski (ub [at] abego-software [dot] de)|
-|''Licence:''|[[BSD open source license (abego Software)]]|
+|Requires|IntelliTaggerPlugin https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTaggerPlugin|
+|Author  |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]]|
+|License |[[BSD open source license|https://yakovl.github.io/TiddlyWiki_abego/maintained/#%5B%5BBSD%20open%20source%20license%20(abego%20Software)%5D%5D]]|
 !Using the &quot;IntelliTagsEditCommandPlugin&quot;
 Add the command {{{intelliTagsEdit}}} into the '~ViewToolbar' slice in your ToolbarCommands.
 
@@ -6435,7 +6476,7 @@ TiddlyWiki.prototype.getSaver = function() {
 |''Twitter:''|[[@abego|https://twitter.com/#!/abego]]|
 |''GitHub:''|https://github.com/abego/YourSearchPlugin|
 |''Author:''|UdoBorkowski (ub [at] abego-software [dot] de)|
-|''License:''|[[BSD open source license|http://www.abego-software.de/legal/apl-v10.html]]|
+|License|[[BSD open source license|https://yakovl.github.io/TiddlyWiki_abego/maintained/#%5B%5BBSD%20open%20source%20license%20(abego%20Software)%5D%5D]]|
 !About YourSearch
 YourSearch gives you a bunch of new features to simplify and speed up your daily searches in TiddlyWiki. It seamlessly integrates into the standard TiddlyWiki search: just start typing into the 'search' field and explore!
 
