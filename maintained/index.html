@@ -1569,12 +1569,6 @@ Thank you &#8212; your support is much appreciated,
 
 Udo Borkowski</pre>
 </div>
-<div title="Download" modifier="UdoBorkowski" modified="200609161217" created="200511161512" tags="basic">
-<pre>* [[Plugins]]
-* [[Installing Plugins]]
-* [[Download TiddlyWiki]]
-</pre>
-</div>
 <div title="Download TiddlyWiki" modifier="UdoBorkowski" modified="200602251034" created="200511161512" tags="basic">
 <pre>Because a TiddlyWiki is a single HTML file, you've actually already downloaded the entire software just by viewing this site. If you want to be able to save your changes, you can save this TiddlyWiki to your local drive by right clicking on [[this link|index.html]] and selecting 'Save link as...' or 'Save target as...'. You can choose where to save the file, and what to call it (but keep the .HTML extension).
 
@@ -3100,7 +3094,7 @@ BTW:  If you would like to writing your own plugins see [[TiddlyWiki/Dev|http://
 
 </pre>
 </div>
-<div title="IntelliTaggerPlugin" modifier="SyncFileTiddler (YourName)" modified="201204162138" created="200604260721" tags="systemConfig" changecount="1">
+<div title="IntelliTaggerPlugin" modifier="Yakov Litvin" modified="202502242138" created="200604260721" tags="systemConfig">
 <pre>/***
 |Name   |IntelliTaggerPlugin|
 |Version|1.0.2 (2007-07-25)|
@@ -3151,8 +3145,8 @@ This adds a &quot;tags&quot; button to the toolbar of the tiddlers (next to the 
 //{{{
 (function(){
 
-if (!version.extensions.IntelliTaggerPlugin)
-    throw Error(&quot;IntelliTagsEditCommandPlugin requires the IntelliTaggerPlugin (https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTaggerPlugin)&quot;);
+if (!version.extensions.IntelliTaggerPlugin) throw Error(
+	&quot;IntelliTagsEditCommandPlugin requires the IntelliTaggerPlugin (https://yakovl.github.io/TiddlyWiki_abego/maintained#IntelliTaggerPlugin)&quot;);
 
 if (config.commands.intelliTagsEdit) return;
 
@@ -4090,12 +4084,11 @@ See also ForEachTiddlerExamples.</pre>
 [[News|abegoExtensions News]]
 ----
 [[Plugins]]
-[[Installing Plugins]]
-----
-[[Download]]
 {{abegoLink{[[Archive|http://tiddlywiki.abego-software.de/archive]]}}}
-[[Donations]]
+[[Installing Plugins]]
+[[Download TiddlyWiki]]
 ----
+[[Donations]]
 [[Copyright]]
 [[Contact]]
 [[Imprint]]
