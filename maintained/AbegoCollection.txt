@@ -1,6 +1,6 @@
 |Source     |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/AbegoCollection.txt|
 |Description|Selected extensions created by Udo Borkowski|
-|Version    |0.2.0|
+|Version    |0.3.0|
 See not yet indexed extensions at https://yakovl.github.io/TiddlyWiki_abego/maintained/
 //{{{
 [
@@ -11,6 +11,10 @@ See not yet indexed extensions at https://yakovl.github.io/TiddlyWiki_abego/main
   {
     "url": "https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/IntelliTaggerPlugin.js",
     "description": "Speed up tagging tiddlers using tag suggestions and much more"
+  },
+  {
+    "url": "https://yakovl.github.io/TiddlyWiki_abego/maintained/src/FormTiddlerPlugin.js",
+    "description": "HTML forms to edit tiddler data and create new tiddlers (requires DataTiddlerPlugin)"
   }
 ]
 //}}}
