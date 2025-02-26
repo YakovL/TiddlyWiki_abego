@@ -1,5 +1,5 @@
 This repository contains TiddlyWiki Classic plugins created by Udo Borkowski,
-a prominent author who created such important pieces such as
+a prominent author who created such important pieces as
 ForEachTiddlerPlugin, IntelliTaggerPlugin, and YourSearchPlugin.
 
 Sadly, Udo is no longer with us, and this repository serves as the central hub
