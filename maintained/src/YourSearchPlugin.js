@@ -1204,9 +1204,12 @@ var lastNewTiddlerButton = null;
 var initStylesheet = function() {
     if (version.extensions.YourSearchPlugin.styleSheetInited)
         return;
-
     version.extensions.YourSearchPlugin.styleSheetInited = true;
-    setStylesheet(store.getTiddlerText("YourSearchStyleSheet"), "yourSearch");
+
+	store.addNotification("YourSearchStyleSheet", refreshStyles);
+	store.addNotification("ColorPalette", function(_, doc) {
+		refreshStyles("YourSearchStyleSheet", doc);
+	});
 };
 
 var isResultOpen = function() {
