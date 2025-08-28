@@ -81,10 +81,7 @@ Check the [[archive|http://tiddlywiki.abego-software.de/archive]] for ~YourSearc
 if (!version.extensions.YourSearchPlugin) {
 
 version.extensions.YourSearchPlugin = {
-    major: 2, minor: 2, revision: 0,
-    source: "http://tiddlywiki.abego-software.de/#YourSearchPlugin",
-    licence: "[[BSD open source license (abego Software)|http://www.abego-software.de/legal/apl-v10.html]]",
-    copyright: "Copyright (c) abego Software GmbH, 2005-2023 (www.abego-software.de)"
+    major: 2, minor: 2, revision: 0
 };
 
 if (!window.abego) window.abego = {};
