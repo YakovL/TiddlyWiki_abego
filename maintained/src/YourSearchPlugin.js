@@ -10,9 +10,6 @@
 YourSearch gives you a bunch of new features to simplify and speed up your daily searches in TiddlyWiki. It seamlessly integrates into the standard TiddlyWiki search: just start typing into the 'search' field and explore!
 
 For more information see [[Help|YourSearch Help]].
-!Compatibility
-This plugin requires TiddlyWiki 2.1.
-Check the [[archive|http://tiddlywiki.abego-software.de/archive]] for ~YourSearchPlugins supporting older versions of TiddlyWiki.
 !Revision history
 * v2.2.0 (2023-05-06)
 ** Several features, fixes and changes by Yakov Litvin. Thanks for contributing.
