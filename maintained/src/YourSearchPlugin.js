@@ -1,7 +1,7 @@
 /***
 |Name       |YourSearchPlugin|
 |Description|Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more.|
-|Version    |2.2.0|
+|Version    |2.3.0|
 |Source     |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js|
 |Demo       |try the search box [[here|https://yakovl.github.io/TiddlyWiki_abego/maintained#YourSearchPlugin]]|
 |Author     |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]], Yakov Litvin|
@@ -11,16 +11,17 @@ YourSearch gives you a bunch of new features to simplify and speed up your daily
 
 For more information see [[Help|YourSearch Help]].
 !Revision history
-* v2.2.0 (2023-05-06)
-** Several features, fixes and changes by Yakov Litvin. Thanks for contributing.
-*** feat: make shadows be formatted as code in TWC 2.9.x and others
-*** feat: increase z-index of .yourSearchResult not to interfere with CodeMirror and others
-*** fix: don't overwrite Array.prototype.forEach when present
-*** refactor: countStrings - omit unreachable return
-*** refactor: use yourSearchResultItemsID instead of repeasting the value
-*** codestyle: make indetation and blocks in myMacroSearchHandler and myStorySearch consistent with other code
-*** codestyle: apply eslint's space-before-blocks, block-spacing, semi-spacing, object-curly-spacing
-*** codestyle: apply eslint's no-trailing-spaces, comma-spacing, space-infix-ops, key-spacing
+* v2.3.0 (2025-08-28), by Yakov Litvin
+** Adapt to DarkModePlugin: bind main colors to ColorPalette, update on palette change (including dark/light mode)
+* v2.2.0 (2023-05-06), by Yakov Litvin
+** feat: make shadows be formatted as code in TWC 2.9.x and others
+** feat: increase z-index of .yourSearchResult not to interfere with CodeMirror and others
+** fix: don't overwrite Array.prototype.forEach when present
+** refactor: countStrings - omit unreachable return
+** refactor: use yourSearchResultItemsID instead of repeasting the value
+** codestyle: make indetation and blocks in myMacroSearchHandler and myStorySearch consistent with other code
+** codestyle: apply eslint's space-before-blocks, block-spacing, semi-spacing, object-curly-spacing
+** codestyle: apply eslint's no-trailing-spaces, comma-spacing, space-infix-ops, key-spacing
 * v2.1.6 (2012-04-19)
 ** Fix issue with IE8. Thanks to Roger Gallion for reporting and providing the fix.  (For details see: https://github.com/abego/YourSearchPlugin/issues/1)
 ** remove warnings
@@ -78,7 +79,7 @@ For more information see [[Help|YourSearch Help]].
 if (!version.extensions.YourSearchPlugin) {
 
 version.extensions.YourSearchPlugin = {
-    major: 2, minor: 2, revision: 0
+    major: 2, minor: 3, revision: 0
 };
 
 if (!window.abego) window.abego = {};
@@ -1648,13 +1649,13 @@ config.macros.yourSearch = {
                         version.extensions.YourSearchPlugin.revision]);
             var e = createTiddlyElement(place, "a");
             e.setAttribute("href", "http://tiddlywiki.abego-software.de/#YourSearchPlugin");
-            e.innerHTML = '<font color="black" face="Arial, Helvetica, sans-serif">' + t + '<font>';
+            e.innerHTML = '<span class="foreground">' + t + '<font>';
         },
 
         copyright: function(place) {
             var e = createTiddlyElement(place, "a");
             e.setAttribute("href", "http://www.abego-software.de");
-            e.innerHTML = '<font color="black" face="Arial, Helvetica, sans-serif">&copy; 2005-2008 <b><font color="red">abego</font></b> Software<font>';
+            e.innerHTML = '<span class="foreground">&copy; 2005-2008 <b class="abego">abego</b> Software<span>';
         },
 
         newTiddlerButton: function(place) {
@@ -1900,23 +1901,33 @@ config.shadowTiddlers["YourSearch Options"] =
 "view text: <<option txtItemsPerPageWithPreview>>|\n";
 
 config.shadowTiddlers["YourSearchStyleSheet"] =
-"/***\n!~YourSearchResult Stylesheet\n***/\n/*{{{*/\n.yourSearchResult {\n\tz-index: 10;\n\tposition: absolute;\n\twidth: 800" +
-"px;\n\n\tpadding: 0.2em;\n\tlist-style: none;\n\tmargin: 0;\n\n\tbackground: #ffd;\n\tborder: 1px solid DarkGra" +
-"y;\n}\n\n/*}}}*/\n/***\n!!Summary Section\n***/\n/*{{{*/\n.yourSearchResult .summary {\n\tborder-bottom-width:" +
-" thin;\n\tborder-bottom-style: solid;\n\tborder-bottom-color: #999999;\n\tpadding-bottom: 4px;\n}\n\n.yourSea" +
-"rchRange, .yourSearchCount, .yourSearchQuery   {\n\tfont-weight: bold;\n}\n\n.yourSearchResult .summary ." +
-"button {\n\tfont-size: 10px;\n\n\tpadding-left: 0.3em;\n\tpadding-right: 0.3em;\n}\n\n.yourSearchResult .summa" +
-"ry .chkBoxLabel {\n\tfont-size: 10px;\n\n\tpadding-right: 0.3em;\n}\n\n/*}}}*/\n/***\n!!Items Area\n***/\n/*{{{*" +
-"/\n.yourSearchResult .marked {\n\tbackground: none;\n\tfont-weight: bold;\n}\n\n.yourSearchItem {\n\tmargin-to" +
-"p: 2px;\n}\n\n.yourSearchNumber {\n\tcolor: #808080;\n}\n\n\n.yourSearchTags {\n\tcolor: #008000;\n}\n\n.yourSearc" +
-"hText {\n\tcolor: #808080;\n\tmargin-bottom: 6px;\n}\n\n/*}}}*/\n/***\n!!Footer\n***/\n/*{{{*/\n.yourSearchFoote" +
-"r {\n\tmargin-top: 8px;\n\tborder-top-width: thin;\n\tborder-top-style: solid;\n\tborder-top-color: #999999;" +
-"\n}\n\n.yourSearchFooter a:hover{\n\tbackground: none;\n\tcolor: none;\n}\n/*}}}*/\n/***\n!!Navigation Bar\n***/" +
-"\n/*{{{*/\n.yourSearchNaviBar a {\n\tfont-size: 16px;\n\tmargin-left: 4px;\n\tmargin-right: 4px;\n\tcolor: bla" +
-"ck;\n\ttext-decoration: underline;\n}\n\n.yourSearchNaviBar a:hover {\n\tbackground-color: none;\n}\n\n.yourSe" +
-"archNaviBar .prev {\n\tfont-weight: bold;\n\tcolor: blue;\n}\n\n.yourSearchNaviBar .currentPage {\n\tcolor: #" +
-"FF0000;\n\tfont-weight: bold;\n\ttext-decoration: none;\n}\n\n.yourSearchNaviBar .next {\n\tfont-weight: bold" +
-";\n\tcolor: blue;\n}\n/*}}}*/\n";
+    "/***\n!~YourSearchResult Stylesheet\n***/\n/*{{{*/\n"+
+    ".yourSearchResult {\n\tz-index: 10;\n\tposition: absolute;\n\twidth: 800px;" +
+    "\n\n\tpadding: 0.2em;\n\tlist-style: none;\n\tmargin: 0;\n\n\tbackground: [[ColorPalette::SecondaryPale]];"+
+    "\n\tborder: 1px solid DarkGray;\n}\n\n/*}}}*/\n" +
+    "/***\n!!Summary Section\n***/\n/*{{{*/\n" +
+    ".yourSearchResult .summary {\n\tborder-bottom-width: thin;\n\tborder-bottom-style: solid;\n\t" +
+    "border-bottom-color: #999999;\n\tpadding-bottom: 4px;\n}\n\n" +
+    ".yourSearchRange, .yourSearchCount, .yourSearchQuery   {\n\tfont-weight: bold;\n}\n\n" +
+    ".yourSearchResult .summary .button {\n\tfont-size: 10px;\n\n\tpadding-left: 0.3em;\n\tpadding-right: 0.3em;\n}\n\n" +
+    ".yourSearchResult .summary .chkBoxLabel {\n\tfont-size: 10px;\n\n\tpadding-right: 0.3em;\n}\n\n/*}}}*/\n" +
+    "/***\n!!Items Area\n***/\n/*{{{*/\n" +
+    ".yourSearchResult .marked {\n\tbackground: none;\n\tfont-weight: bold;\n}\n\n" +
+    ".yourSearchItem {\n\tmargin-top: 2px;\n}\n\n" +
+    ".yourSearchNumber {\n\tcolor: #808080;\n}\n\n\n" +
+    ".yourSearchTags {\n\tcolor: #008000;\n}\n\n" +
+    ".yourSearchText {\n\tcolor: #808080;\n\tmargin-bottom: 6px;\n}\n\n/*}}}*/\n" +
+    "/***\n!!Footer\n***/\n/*{{{*/\n" +
+    ".yourSearchFooter {\n\tmargin-top: 8px;\n\tborder-top-width: thin;\n\tborder-top-style: solid;\n\tborder-top-color: #999999;\n}\n\n" +
+    ".yourSearchFooter a:hover{\n\tbackground: none;\n\tcolor: none;\n}\n/*}}}*/" +
+    "\n/***\n!!Navigation Bar\n***/\n/*{{{*/\n" +
+    ".yourSearchNaviBar a {\n\tfont-size: 16px;\n\tmargin-left: 4px;\n\tmargin-right: 4px;\n\tcolor: [[ColorPalette::Foreground]];\n\ttext-decoration: underline;\n}\n\n" +
+    ".yourSearchNaviBar a:hover {\n\tbackground-color: none;\n}\n\n." +
+    "yourSearchNaviBar .prev {\n\tfont-weight: bold;\n\tcolor: blue;\n}\n\n" +
+    ".yourSearchNaviBar .currentPage {\n\tcolor: #FF0000;\n\tfont-weight: bold;\n\ttext-decoration: none;\n}\n\n" +
+    ".yourSearchNaviBar .next {\n\tfont-weight: bold;\n\tcolor: blue;\n}\n\n" +
+    ".foreground {\n\tcolor: [[ColorPalette::Foreground]];\n}\n\n" +
+    ".abego {\n\tcolor: #FF0000;\n}\n/*}}}*/\n";
 
 config.shadowTiddlers["YourSearchResultTemplate"] =
 "<!--{{{-->\n<span macro=\"yourSearch if found\">\n<!-- The Summary Header ============================" +
