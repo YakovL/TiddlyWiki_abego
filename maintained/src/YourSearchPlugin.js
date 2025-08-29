@@ -1,7 +1,7 @@
 /***
 |Name       |YourSearchPlugin|
 |Description|Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more.|
-|Version    |2.3.0|
+|Version    |2.3.1|
 |Source     |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js|
 |Demo       |try the search box [[here|https://yakovl.github.io/TiddlyWiki_abego/maintained#YourSearchPlugin]]|
 |Author     |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]], Yakov Litvin|
@@ -11,7 +11,9 @@ YourSearch gives you a bunch of new features to simplify and speed up your daily
 
 For more information see [[Help|YourSearch Help]].
 !Revision history
-* v2.3.0 (2025-08-28), by Yakov Litvin
+* v2.3.1 (2025-08-29)
+** Make compatible with keybaord navigation plugin by reusing {{{onClickTiddlerLink}}} in {{{closeResultAndDisplayTiddler}}}
+* v2.3.0 (2025-08-28), by Yakov Litvin (maintainer from this point)
 ** Adapt to DarkModePlugin: bind main colors to ColorPalette, update on palette change (including dark/light mode)
 * v2.2.0 (2023-05-06), by Yakov Litvin
 ** feat: make shadows be formatted as code in TWC 2.9.x and others
@@ -79,7 +81,7 @@ For more information see [[Help|YourSearch Help]].
 if (!version.extensions.YourSearchPlugin) {
 
 version.extensions.YourSearchPlugin = {
-    major: 2, minor: 3, revision: 0
+    major: 2, minor: 3, revision: 1
 };
 
 if (!window.abego) window.abego = {};
@@ -1165,7 +1167,7 @@ var findMatches = function(store, searchText, caseSensitive, useRegExp, sortFiel
         var searchRankDiff = a.searchRank - b.searchRank;
         if (searchRankDiff == 0) {
             if (a[sortField] == b[sortField]) {
-                return(0);
+                return 0;
             } else {
                 return (a[sortField] < b[sortField]) ? -1 : +1;
             }
@@ -1229,17 +1231,15 @@ var closeResult = function() {
 var closeResultAndDisplayTiddler = function(e) {
     closeResult();
 
-    var title = this.getAttribute("tiddlyLink");
-    if(title) {
-        var withHilite = this.getAttribute("withHilite");
-        var oldHighlightHack = highlightHack;
-        if (withHilite && withHilite == "true" && lastQuery) {
-            highlightHack = lastQuery.getMarkRegExp();
-        }
-        story.displayTiddler(this, title);
-        highlightHack = oldHighlightHack;
+    var withHilite = this.getAttribute("withHilite");
+    var oldHighlightHack = highlightHack;
+    if (withHilite && withHilite == "true" && lastQuery) {
+        highlightHack = lastQuery.getMarkRegExp();
     }
-    return(false);
+    onClickTiddlerLink(e);
+    highlightHack = oldHighlightHack;
+
+    return false;
 };
 
 // Adjusts the resultElement's size and position, relative to the search input field.
