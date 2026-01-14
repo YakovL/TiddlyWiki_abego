@@ -1,7 +1,7 @@
 /***
 |Name       |YourSearchPlugin|
 |Description|Search your TiddlyWiki with advanced search features such as result lists, tiddler preview, result ranking, search filters, combined searches and many more.|
-|Version    |2.3.1|
+|Version    |2.3.2|
 |Source     |https://github.com/YakovL/TiddlyWiki_abego/blob/master/maintained/src/YourSearchPlugin.js|
 |Demo       |try the search box [[here|https://yakovl.github.io/TiddlyWiki_abego/maintained#YourSearchPlugin]]|
 |Author     |Udo Borkowski[[*|https://github.com/abego/YourSearchPlugin/issues/3#issuecomment-2531933217]], Yakov Litvin|
@@ -11,6 +11,8 @@ YourSearch gives you a bunch of new features to simplify and speed up your daily
 
 For more information see [[Help|YourSearch Help]].
 !Revision history
+* v2.3.2 (2026-01-14)
+** Fix: "note" should be parsed as "not ..." (thanks to [[Wolfgang|https://groups.google.com/g/tiddlywikiclassic/c/qL4pc1A8hY0]])
 * v2.3.1 (2025-08-29)
 ** Make compatible with keybaord navigation plugin by reusing {{{onClickTiddlerLink}}} in {{{closeResultAndDisplayTiddler}}}
 * v2.3.0 (2025-08-28), by Yakov Litvin (maintainer from this point)
@@ -399,7 +401,7 @@ abego.BoolExp = function(s, parseTermFunc, options) {
     var reCloseParenthesis = /\s*\)/g;  			// match )
     var reAndOr = /\s*(?:(and|\&\&)|(or|\|\|))/gi; 	// group 1: AND, group 2: OR
 
-    var reNot_Parenthesis = /\s*(\-|not)?(\s*\()?/gi;
+    var reNot_Parenthesis = /\s*(\-|not\b)?(\s*\()?/gi;
 
     var parseBoolExpression; //#Pre-declare function name to avoid problem with "shrinkSafe"
 
@@ -1444,8 +1446,7 @@ var myMacroSearchHandler = function(place, macroName, params, wikifier, paramStr
         doSearch(searchInputField);
         return false;
     };
-    var keyHandler = function(e)
-    {
+    var keyHandler = function(e) {
         if (!e) e = window.event;
         searchInputField = this;
         switch(e.keyCode) {
@@ -1472,13 +1473,12 @@ var myMacroSearchHandler = function(place, macroName, params, wikifier, paramStr
 
         if(this.value.length < 3 && searchTimeout) clearTimeout(searchTimeout);
         if(this.value.length > 2) {
-                if (this.value != lastSearchText) {
+            if (this.value != lastSearchText) {
                 if (!config.options.chkUseYourSearch || config.options.chkSearchAsYouType) {
-                    if(searchTimeout)
-                        clearTimeout(searchTimeout);
+                    if(searchTimeout) clearTimeout(searchTimeout);
                     var txt = this;
                     searchTimeout = setTimeout(function() { doSearch(txt) }, 500);
-                    }
+                }
             } else {
                 if(searchTimeout) clearTimeout(searchTimeout);
             }
@@ -1533,13 +1533,10 @@ var myMacroSearchHandler = function(place, macroName, params, wikifier, paramStr
 var openAllFoundTiddlers = function() {
     closeResult();
     var results = getLastResults();
-    var n = results.length;
-    if (n) {
-        var titles = [];
-        for(var i = 0; i < n; i++)
-            titles.push(results[i].title);
-        story.displayTiddlers(null, titles);
-    }
+    var titles = [];
+    for(var i = 0; i < results.length; i++)
+        titles.push(results[i].title);
+    if (titles.length) story.displayTiddlers(null, titles);
 };
 
 var createOptionWithRefresh = function(place, optionParams, wikifier, tiddler) {
