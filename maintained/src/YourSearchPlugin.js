@@ -88,18 +88,6 @@ version.extensions.YourSearchPlugin = {
 
 if (!window.abego) window.abego = {};
 
-// define the Array forEach when not yet defined (e.g. by Mozilla)
-if (!Array.forEach && !Array.prototype.forEach) {
-    Array.forEach = function(obj, callback, thisObj) {
-        for (var i = 0, len = obj.length; i < len; i++)
-            callback.call(thisObj, obj[i], i, obj);
-    };
-    Array.prototype.forEach = function(callback, thisObj) {
-        for (var i = 0, len = this.length; i < len; i++)
-            callback.call(thisObj,  this[i], i, this);
-    };
-}
-
 abego.toInt = function(s, defaultValue) {
     if (!s) return defaultValue;
     var n = parseInt(s);
@@ -200,8 +188,6 @@ abego.getBracedText = function(text, offset, lastIndexRef) {
 // @param test an one-arg boolean function that returns true when the item should be added.
 // @param testObj [optional] the receiver for the test function (global if undefined or null)
 // @param result [optional] an array. When define the selected items are added to this array, otherwise a new array is used.
-//
-//#import Array.prototype.forEach
 //
 abego.select = function(array, test, testObj, result) {
     if (!result) result = [];
