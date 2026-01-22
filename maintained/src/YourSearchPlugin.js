@@ -595,6 +595,8 @@ abego.PageWiseRenderer = function() {
     this.firstIndexOnPage = 0; // The index of the first item of the lastResults list displayed on the search result page
 };
 
+// TODO: calc based on browser/OS pair, start from:
+// developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/accesskey
 var accessKeysPrefix = "Alt-"
 
 merge(abego.PageWiseRenderer.prototype, {
@@ -1898,6 +1900,8 @@ config.shadowTiddlers["YourSearch Help"] =
 "(also called \"shortcut\" keys) for the most frequently used operations. " +
 "For quick reference these shortcuts are also mentioned in the tooltip " +
 "for the various buttons etc.\n\n" +
+"The {{{" + accessKeysPrefix + "}}} part may differ depending on browser, " +
+"most popular variants are {{{Alt-}}}, {{{Shift-Alt-}}}, and {{{Ctrl-Option-}}}.\n\n" +
 "|!Key|!Operation|\n|{{{" + accessKeysPrefix + "F}}}|''The most important keystroke'': " +
 "It moves the cursor to the search input field so you can directly start typing " +
 "your query. Pressing {{{" + accessKeysPrefix + "F}}} will also display the previous " +
