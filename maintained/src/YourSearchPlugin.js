@@ -99,26 +99,17 @@ abego.createEllipsis = function(place) {
     e.innerHTML = "&hellip;";
 };
 
-//#concept Object
-//
-abego.shallowCopy = function(object) {
-    if (!object)
-        return object;
-    var result = {};
-    for (var n in object)
-        result[n] = object[n];
-    return result;
-};
-
 // Returns a shallow copy of the options, or a new, empty object if options is null/undefined.
 //
 // @param options [may be null/undefined]
 //
-//#concept Object, Options
-//#import abego.shallowCopy
-//
 abego.copyOptions = function(options) {
-    return !options ? {} : abego.shallowCopy(options);
+    if (!options) return {};
+
+    var shallowCopy = {};
+    for (var n in options)
+        shallowCopy[n] = options[n];
+    return shallowCopy;
 };
 
 //#import abego.define-namespace
