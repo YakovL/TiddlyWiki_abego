@@ -1831,60 +1831,84 @@ for (var n in opts)
 config.shadowTiddlers.AdvancedOptions += "\n<<option chkUseYourSearch>> Use 'Your Search' //([[more options|YourSearch Options]]) ([[help|YourSearch Help]])// ";
 
 config.shadowTiddlers["YourSearch Help"] =
-"!Field Search\nWith the Field Search you can restrict your search to certain fields of a tiddler, e.g" +
-" only search the tags or only the titles. The general form is //fieldname//'':''//textToSearch// (e." +
-"g. {{{title:intro}}}). In addition one-character shortcuts are also supported for the standard field" +
-"s {{{title}}}, {{{text}}} and {{{tags}}}:\n|!What you want|!What you type|!Example|\n|Search ''titles " +
-"only''|start word with ''!''|{{{!jonny}}} (shortcut for {{{title:jonny}}})|\n|Search ''contents/text " +
-"only''|start word with ''%''|{{{%football}}} (shortcut for {{{text:football}}})|\n|Search ''tags only" +
-"''|start word with ''#''|{{{#Plugin}}} (shortcut for {{{tags:Plugin}}})|\n\nUsing this feature you may" +
-" also search the extended fields (\"Metadata\") introduced with TiddlyWiki 2.1, e.g. use {{{priority:1" +
-"}}} to find all tiddlers with the priority field set to \"1\".\n\nYou may search a word in more than one" +
-" field. E.g. {{{!#Plugin}}} (or {{{title:tags:Plugin}}} in the \"long form\") finds tiddlers containin" +
-"g \"Plugin\" either in the title or in the tags (but does not look for \"Plugin\" in the text). \n\n!Boole" +
-"an Search\nThe Boolean Search is useful when searching for multiple words.\n|!What you want|!What you " +
-"type|!Example|\n|''All words'' must exist|List of words|{{{jonny jeremy}}} (or {{{jonny and jeremy}}}" +
-")|\n|''At least one word'' must exist|Separate words by ''or''|{{{jonny or jeremy}}}|\n|A word ''must " +
-"not exist''|Start word with ''-''|{{{-jonny}}} (or {{{not jonny}}})|\n\n''Note:'' When you specify two" +
-" words, separated with a space, YourSearch finds all tiddlers that contain both words, but not neces" +
-"sarily next to each other. If you want to find a sequence of word, e.g. '{{{John Brown}}}', you need" +
-" to put the words into quotes. I.e. you type: {{{\"john brown\"}}}.\n\nUsing parenthesis you may change " +
-"the default \"left to right\" evaluation of the boolean search. E.g. {{{not (jonny or jeremy)}}} finds" +
-" all tiddlers that contain neither \"jonny\" nor \"jeremy. In contrast to this {{{not jonny or jeremy}}" +
-"} (i.e. without parenthesis) finds all tiddlers that either don't contain \"jonny\" or that contain \"j" +
-"eremy\".\n\n!'Exact Word' Search\nBy default a search result all matches that 'contain' the searched tex" +
-"t. E.g. if you search for {{{Task}}} you will get all tiddlers containing 'Task', but also '~Complet" +
-"edTask', '~TaskForce' etc.\n\nIf you only want to get the tiddlers that contain 'exactly the word' you" +
-" need to prefix it with a '='. E.g. typing '=Task' will find the tiddlers that contain the word 'Tas" +
-"k', ignoring words that just contain 'Task' as a substring.\n\n!~CaseSensitiveSearch and ~RegExpSearch" +
-"\nThe standard search options ~CaseSensitiveSearch and ~RegExpSearch are fully supported by YourSearc" +
-"h. However when ''~RegExpSearch'' is on Filtered and Boolean Search are disabled.\n\nIn addition you m" +
-"ay do a \"regular expression\" search even with the ''~RegExpSearch'' set to false by directly enterin" +
-"g the regular expression into the search field, framed with {{{/.../}}}. \n\nExample: {{{/m[ae][iy]er/" +
-"}}} will find all tiddlers that contain either \"maier\", \"mayer\", \"meier\" or \"meyer\".\n\n!~JavaScript E" +
-"xpression Filtering\nIf you are familiar with JavaScript programming and know some TiddlyWiki interna" +
-"ls you may also use JavaScript expression for the search. Just enter a JavaScript boolean expression" +
-" into the search field, framed with {{{ { ... } }}}. In the code refer to the variable tiddler and e" +
-"valuate to {{{true}}} when the given tiddler should be included in the result. \n\nExample: {{{ { tidd" +
-"ler.modified > new Date(\"Jul 4, 2005\")} }}} returns all tiddler modified after July 4th, 2005.\n\n!Com" +
-"bined Search\nYou are free to combine the various search options. \n\n''Examples''\n|!What you type|!Res" +
-"ult|\n|{{{!jonny !jeremy -%football}}}|all tiddlers with both {{{jonny}}} and {{{jeremy}}} in its tit" +
-"les, but no {{{football}}} in content.|\n|{{{#=Task}}}|All tiddlers tagged with 'Task' (the exact wor" +
-"d). Tags named '~CompletedTask', '~TaskForce' etc. are not considered.|\n\n!Access Keys\nYou are encour" +
-"aged to use the access keys (also called \"shortcut\" keys) for the most frequently used operations. F" +
-"or quick reference these shortcuts are also mentioned in the tooltip for the various buttons etc.\n\n|" +
-"!Key|!Operation|\n|{{{Alt-F}}}|''The most important keystroke'': It moves the cursor to the search in" +
-"put field so you can directly start typing your query. Pressing {{{Alt-F}}} will also display the pr" +
-"evious search result. This way you can quickly display multiple tiddlers using \"Press {{{Alt-F}}}. S" +
-"elect tiddler.\" sequences.|\n|{{{ESC}}}|Closes the [[YourSearch Result]]. When the [[YourSearch Resul" +
-"t]] is already closed and the cursor is in the search input field the field's content is cleared so " +
-"you start a new query.|\n|{{{Alt-1}}}, {{{Alt-2}}},... |Pressing these keys opens the first, second e" +
-"tc. tiddler from the result list.|\n|{{{Alt-O}}}|Opens all found tiddlers.|\n|{{{Alt-P}}}|Toggles the " +
-"'Preview Text' mode.|\n|{{{Alt-'<'}}}, {{{Alt-'>'}}}|Displays the previous or next page in the [[Your" +
-"Search Result]].|\n|{{{Return}}}|When you have turned off the 'as you type' search mode pressing the " +
-"{{{Return}}} key actually starts the search (as does pressing the 'search' button).|\n\n//If some of t" +
-"hese shortcuts don't work for you check your browser if you have other extensions installed that alr" +
-"eady \"use\" these shortcuts.//";
+"!Field Search\nWith the Field Search you can restrict your search to certain " +
+"fields of a tiddler, e.g only search the tags or only the titles. " +
+"The general form is //fieldname//'':''//textToSearch// (e.g. {{{title:intro}}}). " +
+"In addition one-character shortcuts are also supported for the standard " +
+"fields {{{title}}}, {{{text}}} and {{{tags}}}:\n" +
+"|!What you want|!What you type|!Example|\n" +
+"|Search ''titles only''|start word with ''!''|{{{!jonny}}} (shortcut for {{{title:jonny}}})|\n" +
+"|Search ''contents/text only''|start word with ''%''|{{{%football}}} (shortcut for {{{text:football}}})|\n" +
+"|Search ''tags only''|start word with ''#''|{{{#Plugin}}} (shortcut for {{{tags:Plugin}}})|\n\n" +
+"Using this feature you may also search the extended fields (\"Metadata\") " +
+"introduced with TiddlyWiki 2.1, e.g. use {{{priority:1}}} to find all tiddlers " +
+"with the priority field set to \"1\".\n\n" +
+"You may search a word in more than one field. E.g. {{{!#Plugin}}} " +
+"(or {{{title:tags:Plugin}}} in the \"long form\") finds tiddlers containing " +
+"\"Plugin\" either in the title or in the tags (but does not look for " +
+"\"Plugin\" in the text). \n\n" +
+"!Boolean Search\nThe Boolean Search is useful when searching for multiple words.\n" +
+"|!What you want|!What you type|!Example|\n" +
+"|''All words'' must exist|List of words|{{{jonny jeremy}}} (or {{{jonny and jeremy}}})|\n" +
+"|''At least one word'' must exist|Separate words by ''or''|{{{jonny or jeremy}}}|\n" +
+"|A word ''must not exist''|Start word with ''-''|{{{-jonny}}} (or {{{not jonny}}})|\n\n" +
+"''Note:'' When you specify two words, separated with a space, YourSearch finds " +
+"all tiddlers that contain both words, but not necessarily next to each other. " +
+"If you want to find a sequence of word, e.g. '{{{John Brown}}}', you need to put " +
+"the words into quotes. I.e. you type: {{{\"john brown\"}}}.\n\n" +
+"Using parenthesis you may change the default \"left to right\" evaluation of the " +
+"boolean search. E.g. {{{not (jonny or jeremy)}}} finds all tiddlers that " +
+"contain neither \"jonny\" nor \"jeremy. In contrast to this {{{not jonny or " +
+"jeremy}}} (i.e. without parenthesis) finds all tiddlers that either don't " +
+"contain \"jonny\" or that contain \"jeremy\".\n\n!'Exact Word' Search\n" +
+"By default a search result all matches that 'contain' the searched tex" +
+"t. E.g. if you search for {{{Task}}} you will get all tiddlers containing " +
+"'Task', but also '~CompletedTask', '~TaskForce' etc.\n\nIf you only want " +
+"to get the tiddlers that contain 'exactly the word' you need to prefix it " +
+"with a '='. E.g. typing '=Task' will find the tiddlers that contain the " +
+"word 'Task', ignoring words that just contain 'Task' as a substring.\n\n" +
+"!~CaseSensitiveSearch and ~RegExpSearch\nThe standard search options " +
+"~CaseSensitiveSearch and ~RegExpSearch are fully supported by YourSearch. " +
+"However when ''~RegExpSearch'' is on Filtered and Boolean Search are disabled.\n\n" +
+"In addition you may do a \"regular expression\" search even with the ''~RegExpSearch'' " +
+"set to false by directly entering the regular expression into the search field, " +
+"framed with {{{/.../}}}. \n\n" +
+"Example: {{{/m[ae][iy]er/}}} will find all tiddlers that contain either \"maier\", " +
+"\"mayer\", \"meier\" or \"meyer\".\n\n" +
+"!~JavaScript Expression Filtering\n" +
+"If you are familiar with JavaScript programming and know some TiddlyWiki internals " +
+"you may also use JavaScript expression for the search. Just " +
+"enter a JavaScript boolean expression into the search field, framed with " +
+"{{{ { ... } }}}. In the code refer to the variable tiddler and evaluate " +
+"to {{{true}}} when the given tiddler should be included in the result. \n\n" +
+"Example: {{{ { tiddler.modified > new Date(\"Jul 4, 2005\")} }}} returns all " +
+"tiddler modified after July 4th, 2005.\n\n" +
+"!Combined Search\nYou are free to combine the various search options. \n\n" +
+"''Examples''\n|!What you type|!Result|\n" +
+"|{{{!jonny !jeremy -%football}}}|all tiddlers with both {{{jonny}}} and " +
+"{{{jeremy}}} in its titles, but no {{{football}}} in content.|\n|{{{#=Task}}}" +
+"|All tiddlers tagged with 'Task' (the exact word). Tags named " +
+"'~CompletedTask', '~TaskForce' etc. are not considered.|\n\n" +
+"!Access Keys\nYou are encouraged to use the access keys " +
+"(also called \"shortcut\" keys) for the most frequently used operations. " +
+"For quick reference these shortcuts are also mentioned in the tooltip " +
+"for the various buttons etc.\n\n" +
+"|!Key|!Operation|\n|{{{Alt-F}}}|''The most important keystroke'': It moves " +
+"the cursor to the search input field so you can directly start typing " +
+"your query. Pressing {{{Alt-F}}} will also display the previous search " +
+"result. This way you can quickly display multiple tiddlers using " +
+"\"Press {{{Alt-F}}}. Select tiddler.\" sequences.|\n|{{{ESC}}}|Closes the " +
+"[[YourSearch Result]]. When the [[YourSearch Result]] is already closed " +
+"and the cursor is in the search input field the field's content is " +
+"cleared so you start a new query.|\n|{{{Alt-1}}}, {{{Alt-2}}},... |Pressing " +
+"these keys opens the first, second etc. tiddler from the result list.|\n|" +
+"{{{Alt-O}}}|Opens all found tiddlers.|\n|{{{Alt-P}}}|Toggles the 'Preview " +
+"Text' mode.|\n|{{{Alt-'<'}}}, {{{Alt-'>'}}}|Displays the previous or next " +
+"page in the [[YourSearch Result]].|\n|{{{Return}}}|When you have turned " +
+"off the 'as you type' search mode pressing the {{{Return}}} key actually " +
+"starts the search (as does pressing the 'search' button).|\n\n" +
+"//If some of these shortcuts don't work for you check your browser if you " +
+"have other extensions installed that already \"use\" these shortcuts.//";
 
 config.shadowTiddlers["YourSearch Options"] =
 "|>|!YourSearch Options|\n|>|<<option chkUseYourSearch>> Use 'Your Search'|\n|!|<<option chkPreviewText" +
