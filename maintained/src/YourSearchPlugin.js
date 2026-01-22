@@ -595,6 +595,8 @@ abego.PageWiseRenderer = function() {
     this.firstIndexOnPage = 0; // The index of the first item of the lastResults list displayed on the search result page
 };
 
+var accessKeysPrefix = "Alt-"
+
 merge(abego.PageWiseRenderer.prototype, {
     setItems: function(items) {
         this.items = items;
@@ -682,7 +684,8 @@ merge(abego.PageWiseRenderer.prototype, {
         var currentPageIndex = this.getCurrentPageIndex();
         var lastPageIndex = this.getLastPageIndex();
         if (currentPageIndex > 0) {
-            button = createTiddlyButton(place, "Previous", "Go to previous page (Shortcut: Alt-'<')", onNaviButtonClick, "prev");
+            button = createTiddlyButton(place, "Previous",
+                "Go to previous page (Shortcut: " + accessKeysPrefix + "'<')", onNaviButtonClick, "prev");
             button.setAttribute("page", (currentPageIndex - 1).toString());
             button.setAttribute("accessKey", "<");
         }
@@ -699,7 +702,8 @@ merge(abego.PageWiseRenderer.prototype, {
         }
 
         if (currentPageIndex < lastPageIndex) {
-            button = createTiddlyButton(place, "Next", "Go to next page (Shortcut: Alt-'>')", onNaviButtonClick, "next");
+            button = createTiddlyButton(place, "Next",
+                "Go to next page (Shortcut: " + accessKeysPrefix + "'>')", onNaviButtonClick, "next");
             button.setAttribute("page", (currentPageIndex + 1).toString());
             button.setAttribute("accessKey", ">");
         }
@@ -1565,7 +1569,7 @@ var removeTextDecoration = function(s) {
 
 
 // Returns the "shortcut number" of the currentTiddler.
-// I.e. When the user presses Alt-n the given tiddler is opened/display.
+// I.e. When the user presses accessKeys-n the given tiddler is opened/display.
 //
 // @return 0-9 or -1 when no number is defined
 //
@@ -1690,7 +1694,8 @@ config.macros.yourSearch = {
             if (n == 0) return;
 
             var title = n == 1 ? "open tiddler" : "open all %0 tiddlers".format([n]);
-            var button = createTiddlyButton(place, title, "Open all found tiddlers (Shortcut: Alt-O)", openAllFoundTiddlers);
+            var button = createTiddlyButton(place, title,
+                "Open all found tiddlers (Shortcut: " + accessKeysPrefix + "O)", openAllFoundTiddlers);
             button.setAttribute("accessKey", "O");
         },
 
@@ -1728,7 +1733,7 @@ config.macros.yourSearch = {
         chkPreviewText: function(place, macroName, params, wikifier, paramString, tiddler) {
             var elem = createOptionWithRefresh(place, "chkPreviewText", wikifier, tiddler);
             elem.setAttribute("accessKey", "P");
-            elem.title = "Show text preview of found tiddlers (Shortcut: Alt-P)";
+            elem.title = "Show text preview of found tiddlers (Shortcut: " + accessKeysPrefix + "P)";
             return elem;
         }
     }
@@ -1754,7 +1759,7 @@ config.macros.foundTiddler = {
 
             var shortcutNumber = getShortCutNumber();
             var tooltip = shortcutNumber >= 0
-                    ? "Open tiddler (Shortcut: Alt-%0)".format([shortcutNumber.toString()])
+                    ? "Open tiddler (Shortcut: " + accessKeysPrefix + shortcutNumber + ")"
                     : "Open tiddler";
 
             var btn = createTiddlyButton(place, null, tooltip, closeResultAndDisplayTiddler, null);
@@ -1790,7 +1795,7 @@ config.macros.foundTiddler = {
         },
 
         // Renders the "shortcut number" of the current tiddler, to indicate to the user
-        // what number to "Alt-press" to open the tiddler.
+        // what number to use in the hotkey combination to open the tiddler.
         //
         number: function(place, macroName, params, wikifier, paramString, tiddler) {
             var numberToDisplay = getShortCutNumber();
@@ -1893,20 +1898,22 @@ config.shadowTiddlers["YourSearch Help"] =
 "(also called \"shortcut\" keys) for the most frequently used operations. " +
 "For quick reference these shortcuts are also mentioned in the tooltip " +
 "for the various buttons etc.\n\n" +
-"|!Key|!Operation|\n|{{{Alt-F}}}|''The most important keystroke'': It moves " +
-"the cursor to the search input field so you can directly start typing " +
-"your query. Pressing {{{Alt-F}}} will also display the previous search " +
-"result. This way you can quickly display multiple tiddlers using " +
-"\"Press {{{Alt-F}}}. Select tiddler.\" sequences.|\n|{{{ESC}}}|Closes the " +
-"[[YourSearch Result]]. When the [[YourSearch Result]] is already closed " +
+"|!Key|!Operation|\n|{{{" + accessKeysPrefix + "F}}}|''The most important keystroke'': " +
+"It moves the cursor to the search input field so you can directly start typing " +
+"your query. Pressing {{{" + accessKeysPrefix + "F}}} will also display the previous " +
+"search result. This way you can quickly display multiple tiddlers using " +
+"\"Press {{{" + accessKeysPrefix + "F}}}. Select tiddler.\" sequences.|\n|{{{ESC}}}|" +
+"Closes the [[YourSearch Result]]. When the [[YourSearch Result]] is already closed " +
 "and the cursor is in the search input field the field's content is " +
-"cleared so you start a new query.|\n|{{{Alt-1}}}, {{{Alt-2}}},... |Pressing " +
-"these keys opens the first, second etc. tiddler from the result list.|\n|" +
-"{{{Alt-O}}}|Opens all found tiddlers.|\n|{{{Alt-P}}}|Toggles the 'Preview " +
-"Text' mode.|\n|{{{Alt-'<'}}}, {{{Alt-'>'}}}|Displays the previous or next " +
-"page in the [[YourSearch Result]].|\n|{{{Return}}}|When you have turned " +
-"off the 'as you type' search mode pressing the {{{Return}}} key actually " +
-"starts the search (as does pressing the 'search' button).|\n\n" +
+"cleared so you start a new query.|\n" +
+"|{{{" + accessKeysPrefix + "1}}}, {{{" + accessKeysPrefix + "2}}},... |" +
+"Pressing these keys opens the first, second etc. tiddler from the result list.|\n" +
+"|{{{" + accessKeysPrefix + "O}}}|Opens all found tiddlers.|\n" +
+"|{{{" + accessKeysPrefix + "P}}}|Toggles the 'Preview Text' mode.|\n" +
+"|{{{" + accessKeysPrefix + "'<'}}}, {{{" + accessKeysPrefix + "'>'}}}|" +
+"Displays the previous or next page in the [[YourSearch Result]].|\n" +
+"|{{{Return}}}|When you have turned off the 'as you type' search mode pressing" +
+" the {{{Return}}} key actually starts the search (as does pressing the 'search' button).|\n\n" +
 "//If some of these shortcuts don't work for you check your browser if you " +
 "have other extensions installed that already \"use\" these shortcuts.//";
 
