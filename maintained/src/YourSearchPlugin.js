@@ -362,7 +362,7 @@ abego.parseTiddlerFilterTerm = function(queryText, offset, options) {
 //
 // To evaluate the expression in a given context use code like this:
 //
-//	var be = new abego.BoolExp(s, termParseFunc);
+//  var be = new abego.BoolExp(s, termParseFunc);
 //  var result = be.exec(context);
 //
 // @param s the text defining the expression
@@ -1194,10 +1194,10 @@ var initStylesheet = function() {
         return;
     version.extensions.YourSearchPlugin.styleSheetInited = true;
 
-	store.addNotification("YourSearchStyleSheet", refreshStyles);
-	store.addNotification("ColorPalette", function(_, doc) {
-		refreshStyles("YourSearchStyleSheet", doc);
-	});
+    store.addNotification("YourSearchStyleSheet", refreshStyles);
+    store.addNotification("ColorPalette", function(_, doc) {
+        refreshStyles("YourSearchStyleSheet", doc);
+    });
 };
 
 var isResultOpen = function() {
@@ -1270,7 +1270,7 @@ var scrollVisible = function() {
 // Makes sure the result page has a good size and position and visible
 // (may scroll the window)
 //
-var	ensureResultIsDisplayedNicely = function() {
+var ensureResultIsDisplayedNicely = function() {
     adjustResultPositionAndSize();
     scrollVisible();
 };
@@ -1345,7 +1345,7 @@ pager.onPageChanged = function() {
     refreshResult();
 };
 
-var	reopenResultIfApplicable = function() {
+var reopenResultIfApplicable = function() {
     if (searchInputField == null || !config.options.chkUseYourSearch) return;
 
     if ((searchInputField.value == lastSearchText) && lastSearchText && !isResultOpen()) {
@@ -1655,7 +1655,7 @@ config.macros.yourSearch = {
         linkButton: function(place, macroName, params, wikifier, paramString, tiddler) {
             if (params < 2) return;
 
-            var	tiddlyLink = params[1];
+            var tiddlyLink = params[1];
             var text = params < 3 ? tiddlyLink : params[2];
             var tooltip = params < 4 ? text : params[3];
             var accessKey = params < 5 ? null : params[4];
@@ -1766,7 +1766,7 @@ config.macros.foundTiddler = {
 
         field:  function(place, macroName, params, wikifier, paramString, tiddler) {
             if (!currentTiddler) return;
-            var	name = params[1];
+            var name = params[1];
             var len = params.length > 2 ? abego.toInt(params[2], maxCharsInField) : maxCharsInField;
             var v = store.getValue(currentTiddler, name);
             if (v)
@@ -1965,10 +1965,12 @@ config.shadowTiddlers["YourSearchResultTemplate"] =
 "/tr>\n</tbody></table>\n</span>\n<!--}}}-->";
 
 config.shadowTiddlers["YourSearchItemTemplate"] =
-"<!--{{{-->\n<span class='yourSearchNumber' macro='foundTiddler number'></span>\n<span class='yourSea" +
-"rchTitle' macro='foundTiddler title'/></span>&nbsp;-&nbsp;\n<span class='yourSearchTags' macro='found" +
-"Tiddler field tags 50'/></span>\n<span macro=\"yourSearch if previewText\"><div class='yourSearchText' macro='fo" +
-"undTiddler field text 250'/></div></span>\n<!--}}}-->";
+    "<!--{{{-->\n" +
+    "<span class='yourSearchNumber' macro='foundTiddler number'></span>\n" +
+    "<span class='yourSearchTitle' macro='foundTiddler title'/></span>&nbsp;-&nbsp;\n" +
+    "<span class='yourSearchTags' macro='foundTiddler field tags 50'/></span>\n" +
+    "<span macro=\"yourSearch if previewText\"><div class='yourSearchText' macro='foundTiddler field text 250'/></div></span>\n" +
+    "<!--}}}-->";
 
 config.shadowTiddlers["YourSearch"] = "<<tiddler [[YourSearch Help]]>>";
 
