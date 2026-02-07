@@ -2011,17 +2011,16 @@ config.shadowTiddlers["YourSearch Result"] = "The popup-like window displaying t
 // that nobody else has overwritten it.
 config.macros.search.handler = myMacroSearchHandler;
 
-var checkForOtherHijacker = function() {
-    // Check that still our search handler is installed
+// Check that still our search handler is installed
+setTimeout(function() {
     if (config.macros.search.handler != myMacroSearchHandler) {
-        alert(
-"Message from YourSearchPlugin:\n\n\nAnother plugin has disabled the 'Your Search' features.\n\n\nYou may " +
-"disable the other plugin or change the load order of \nthe plugins (by changing the names of the tidd" +
-"lers)\nto enable the 'Your Search' features.");
+        alert("Message from YourSearchPlugin:\n\n\n" +
+            "Another plugin has disabled the 'Your Search' features.\n\n\n" +
+            "You may disable the other plugin or change the load order of \n" +
+            "the plugins (by changing the names of the tiddlers)\n" +
+            "to enable the 'Your Search' features.");
     }
-};
-
-setTimeout(checkForOtherHijacker, 5000);
+}, 5000);
 
 // === Public API =================================
 
