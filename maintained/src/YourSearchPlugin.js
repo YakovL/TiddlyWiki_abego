@@ -1899,15 +1899,17 @@ config.shadowTiddlers["YourSearch Help"] =
 "have other extensions installed that already \"use\" these shortcuts.//";
 
 config.shadowTiddlers["YourSearch Options"] =
-"|>|!YourSearch Options|\n|>|<<option chkUseYourSearch>> Use 'Your Search'|\n|!|<<option chkPreviewText" +
-">> Show Text Preview|\n|!|<<option chkSearchAsYouType>> 'Search As You Type' Mode (No RETURN required" +
-" to start search)|\n|!|Default Search Filter:<<option chkSearchInTitle>>Title ('!')     <<option chk" +
-"SearchInText>>Text ('%')     <<option chkSearchInTags>>Tags ('#')    <<option chkSearchExtendedFiel" +
-"ds>>Extended Fields<html><br><font size=\"-2\">The fields of a tiddlers that are searched when you don" +
-"'t explicitly specify a filter in the search text <br>(Explictly specify fields using one or more '!" +
-"', '%', '#' or 'fieldname:' prefix before the word/text to find).</font></html>|\n|!|Number of items " +
-"on search result page: <<option txtItemsPerPage>>|\n|!|Number of items on search result page with pre" +
-"view text: <<option txtItemsPerPageWithPreview>>|\n";
+    "|>|!YourSearch Options|\n" +
+    "|>|<<option chkUseYourSearch>> Use 'Your Search'|\n" +
+    "|!|<<option chkPreviewText>> Show Text Preview|\n" +
+    "|!|<<option chkSearchAsYouType>> 'Search As You Type' Mode (No RETURN required to start search)|\n" +
+    "|!|Default Search Filter:<<option chkSearchInTitle>>Title ('!')     " +
+    "<<option chkSearchInText>>Text ('%')     <<option chkSearchInTags>>Tags ('#')    " +
+    "<<option chkSearchExtendedFields>>Extended Fields<html><br><font size=\"-2\">" +
+    "The fields of a tiddlers that are searched when you don't explicitly specify a filter in the search text <br>" +
+    "(Explictly specify fields using one or more '!', '%', '#' or 'fieldname:' prefix before the word/text to find).</font></html>|\n" +
+    "|!|Number of items on search result page: <<option txtItemsPerPage>>|\n" +
+    "|!|Number of items on search result page with preview text: <<option txtItemsPerPageWithPreview>>|\n";
 
 config.shadowTiddlers["YourSearchStyleSheet"] =
     "/***\n!~YourSearchResult Stylesheet\n***/\n/*{{{*/\n"+
