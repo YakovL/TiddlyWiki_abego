@@ -1939,30 +1939,55 @@ config.shadowTiddlers["YourSearchStyleSheet"] =
     ".abego {\n\tcolor: #FF0000;\n}\n/*}}}*/\n";
 
 config.shadowTiddlers["YourSearchResultTemplate"] =
-"<!--{{{-->\n<span macro=\"yourSearch if found\">\n<!-- The Summary Header ============================" +
-"================ -->\n<table class=\"summary\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">" +
-"<tbody>\n  <tr>\n\t<td align=\"left\">\n\t\tYourSearch Result <span class=\"yourSearchRange\" macro=\"yourSearc" +
-"h itemRange\"></span>\n\t\t&nbsp;of&nbsp;<span class=\"yourSearchCount\" macro=\"yourSearch count\"></span>\n" +
-"\t\tfor&nbsp;<span class=\"yourSearchQuery\" macro=\"yourSearch query\"></span>\n\t</td>\n\t<td class=\"yourSea" +
-"rchButtons\" align=\"right\">\n\t\t<span macro=\"yourSearch chkPreviewText\"></span><span class=\"chkBoxLabel" +
-"\">preview text</span>\n\t\t<span macro=\"yourSearch newTiddlerButton\"></span>\n\t\t<span macro=\"yourSearch openAllButton\"></span>\n\t\t<span macro=\"yourSearch lin" +
-"kButton 'YourSearch Options' options 'Configure YourSearch'\"></span>\n\t\t<span macro=\"yourSearch linkB" +
-"utton 'YourSearch Help' help 'Get help how to use YourSearch'\"></span>\n\t\t<span macro=\"yourSearch clo" +
-"seButton\"></span>\n\t</td>\n  </tr>\n</tbody></table>\n\n<!-- The List of Found Tiddlers =================" +
-"=========================== -->\n<div id=\"" + yourSearchResultItemsID + "\" itemsPerPage=\"25\" itemsPerPageWithPr" +
-"eview=\"10\"></div>\n\n<!-- The Footer (with the Navigation) ===========================================" +
-"= -->\n<table class=\"yourSearchFooter\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tbody" +
-">\n  <tr>\n\t<td align=\"left\">\n\t\tResult page: <span class=\"yourSearchNaviBar\" macro=\"yourSearch naviBar" +
-"\"></span>\n\t</td>\n\t<td align=\"right\"><span macro=\"yourSearch version\"></span>, <span macro=\"yourSearc" +
-"h copyright\"></span>\n\t</td>\n  </tr>\n</tbody></table>\n<!-- end of the 'tiddlers found' case =========" +
-"================================== -->\n</span>\n\n\n<!-- The \"No tiddlers found\" case =================" +
-"========================== -->\n<span macro=\"yourSearch if not found\">\n<table class=\"summary\" border=" +
-"\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tbody>\n  <tr>\n\t<td align=\"left\">\n\t\tYourSearch Resu" +
-"lt: No tiddlers found for <span class=\"yourSearchQuery\" macro=\"yourSearch query\"></span>.\n\t</td>\n\t<t" +
-"d class=\"yourSearchButtons\" align=\"right\">\n\t\t<span macro=\"yourSearch newTiddlerButton\"></span>\n\t\t<span macro=\"yourSearch linkButton 'YourSearch Options'" +
-" options 'Configure YourSearch'\"></span>\n\t\t<span macro=\"yourSearch linkButton 'YourSearch Help' help" +
-" 'Get help how to use YourSearch'\"></span>\n\t\t<span macro=\"yourSearch closeButton\"></span>\n\t</td>\n  <" +
-"/tr>\n</tbody></table>\n</span>\n<!--}}}-->";
+    "<!--{{{-->\n" +
+    "<span macro=\"yourSearch if found\">\n" +
+    "<!-- The Summary Header ============================================ -->\n" +
+    "<table class=\"summary\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tbody>\n" +
+    "  <tr>\n" +
+    "    <td align=\"left\">\n" +
+    "      YourSearch Result <span class=\"yourSearchRange\" macro=\"yourSearch itemRange\"></span>\n" +
+    "      &nbsp;of&nbsp;<span class=\"yourSearchCount\" macro=\"yourSearch count\"></span>\n" +
+    "      for&nbsp;<span class=\"yourSearchQuery\" macro=\"yourSearch query\"></span>\n" +
+    "    </td>\n" +
+    "    <td class=\"yourSearchButtons\" align=\"right\">\n" +
+    "      <span macro=\"yourSearch chkPreviewText\"></span><span class=\"chkBoxLabel\">preview text</span>\n" +
+    "      <span macro=\"yourSearch newTiddlerButton\"></span>\n" +
+    "      <span macro=\"yourSearch openAllButton\"></span>\n" +
+    "      <span macro=\"yourSearch linkButton 'YourSearch Options' options 'Configure YourSearch'\"></span>\n" +
+    "      <span macro=\"yourSearch linkButton 'YourSearch Help' help 'Get help how to use YourSearch'\"></span>\n" +
+    "      <span macro=\"yourSearch closeButton\"></span>\n" +
+    "    </td>\n" +
+    "  </tr>\n" +
+    "</tbody></table>\n\n" +
+
+"<!-- The List of Found Tiddlers ============================================ -->\n" +
+    "<div id=\"" + yourSearchResultItemsID + "\" itemsPerPage=\"25\" itemsPerPageWithPreview=\"10\"></div>\n\n" +
+
+    "<!-- The Footer (with the Navigation) ============================================ -->\n" +
+    "<table class=\"yourSearchFooter\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tbody>\n" +
+    "  <tr>\n" +
+    "    <td align=\"left\">\n\t\tResult page: <span class=\"yourSearchNaviBar\" macro=\"yourSearch naviBar\"></span>\n\t</td>\n" +
+    "    <td align=\"right\"><span macro=\"yourSearch version\"></span>, <span macro=\"yourSearch copyright\"></span>\n\t</td>\n" +
+    "  </tr>\n" +
+    "</tbody></table>\n" +
+    "<!-- end of the 'tiddlers found' case =========================================== -->\n" +
+    "</span>\n\n\n" +
+
+    "<!-- The \"No tiddlers found\" case =========================================== -->\n" +
+    "<span macro=\"yourSearch if not found\">\n" +
+    "<table class=\"summary\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tbody>\n" +
+    "  <tr>\n" +
+    "    <td align=\"left\">\n\t\tYourSearch Result: No tiddlers found for <span class=\"yourSearchQuery\" macro=\"yourSearch query\"></span>.\n\t</td>\n" +
+    "    <td class=\"yourSearchButtons\" align=\"right\">\n" +
+    "      <span macro=\"yourSearch newTiddlerButton\"></span>\n" +
+    "      <span macro=\"yourSearch linkButton 'YourSearch Options' options 'Configure YourSearch'\"></span>\n" +
+    "      <span macro=\"yourSearch linkButton 'YourSearch Help' help 'Get help how to use YourSearch'\"></span>\n" +
+    "      <span macro=\"yourSearch closeButton\"></span>\n" +
+    "    </td>\n" +
+    "  </tr>\n" +
+    "</tbody></table>\n" +
+    "</span>\n" +
+    "<!--}}}-->";
 
 config.shadowTiddlers["YourSearchItemTemplate"] =
     "<!--{{{-->\n" +
